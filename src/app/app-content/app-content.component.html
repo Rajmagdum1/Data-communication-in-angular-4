@@ -1,0 +1,51 @@
+<div class="container" style="height:85%">
+  <div class="row">
+    <div class="col-sm-2">
+      <h3>User Menu</h3>
+    </div>
+
+    <div class="col-sm-8">
+      <div class="row">
+        <h3 class="text-center"> Reactive Form Validation</h3>
+      </div>
+      <div class="row">
+        <div class="jumbotron">
+          <h2>Data Driven (Reactive) Form</h2>
+          <!-- Right of the bat, we no longer declare a local variable but use the formGroup directive and set it the reactiveForm object we defined in the constructor. Throughout the form, we will reference the complexForm root object as can be seen in the submitForm function.-->
+          <form [formGroup]="reactiveForm" (ngSubmit)="submitForm(reactiveForm.value)">
+
+            <div class="form-group" [ngClass]="{'has-error':!reactiveForm.controls['firstName'].valid && reactiveForm.controls['firstName'].touched}">
+              <label>First Name:</label>
+              <input class="form-control" type="text" placeholder="John" [formControl]="reactiveForm.controls['firstName']">
+              <!-- The hasError method will tell us if a particular error exists -->
+              <div *ngIf="reactiveForm.controls['firstName'].hasError('required') && reactiveForm.controls['firstName'].touched" class="alert alert-danger">You must include a first name.</div>
+            </div>
+
+            <div class="form-group" [ngClass]="{'has-error':!reactiveForm.controls['lastName'].valid && reactiveForm.controls['lastName'].touched}">
+              <label>Last Name</label>
+              <input class="form-control" type="text" placeholder="Doe" [formControl]="reactiveForm.controls['lastName']">
+              <!-- The hasError method will tell us if a particular error exists -->
+              <div *ngIf="reactiveForm.controls['lastName'].hasError('required')  && reactiveForm.controls['lastName'].touched" class="alert alert-danger">You must include a last name.</div>
+            </div>
+
+           <div class="form-group" [ngClass]="{'has-error':!reactiveForm.controls['mobileNumber'].valid && reactiveForm.controls['mobileNumber'].touched}">
+              <label>Last Name</label>
+              <input class="form-control" type="text" placeholder="998-676-8210" [formControl]="reactiveForm.controls['mobileNumber']">
+              <!-- The hasError method will tell us if a particular error exists -->
+              <div *ngIf="reactiveForm.controls['mobileNumber'].hasError('required')  && reactiveForm.controls['mobileNumber'].touched" class="alert alert-danger">You must include a mobile number.</div>
+            </div>
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary" [disabled]="!reactiveForm.valid">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-2">
+      <h3>User Deatils</h3>
+    </div>
+
+  </div>
+</div>

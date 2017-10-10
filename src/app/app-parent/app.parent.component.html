@@ -1,0 +1,37 @@
+<div class="container" style="height:85%">
+        <div class="row">
+            <div class="col-sm-2">
+                <h3>Employee Menu</h3>
+            </div>
+            <div class="col-sm-8">
+                <div class="row">
+                    <h3 class="text-center"> Employee details </h3>
+                </div>
+                <div class="row">
+                    <div class="jumbotron">
+                        <h2>Employee Details </h2>
+                        <div class="form-group">
+                            <input class="form-control" id="employee.city" type="text"  name="employee.city"
+                             value="{{employee.city}}"
+                            placeholder="Emp Name"
+                             [(ngModel)]='employee.city'>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" id="employee.name"   name="employee.name"
+                             value="{{employee.name}}"
+                            placeholder="Emp city" 
+                            [(ngModel)]='employee.name'>
+                        </div>
+                        <!-- child component detail here -->
+                        <div class="form-group">
+                            <app-child  (deptDataEmitter)='handleEvent($event)'></app-child>
+                        </div>
+                        <div class="form-group">
+                            <input type="button" value="submit" (click)='onClick()' />
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
